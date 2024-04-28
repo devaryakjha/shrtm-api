@@ -9,11 +9,11 @@ import (
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 	app := fiber.New()
-	app.Get("/", greet)
+	app.Get("/", root)
 	adaptor.FiberApp(app)(w, r)
 }
 
-func greet(c *fiber.Ctx) error {
+func root(c *fiber.Ctx) error {
 	c.Response().Header.Set(fiber.HeaderContentType, fiber.MIMEApplicationJSONCharsetUTF8)
 	return c.SendString("Hello World 👋!")
 }
